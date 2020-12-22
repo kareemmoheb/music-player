@@ -3,9 +3,9 @@ import React from "react";
 const Song = () => {
     return (
         <div className="song">
-            <img src="" alt="" className="song_cover" />
-            <div className="song_title">sweet life</div>
-            <div className="song_artist">kareem moheb</div>
+            <img src="" alt="song cover" className="song_cover" />
+            <div className="song_title">LIITA</div>
+            <div className="song_artist">Felix Jaehn, Breaking Beattz</div>
         </div>
     );
 }

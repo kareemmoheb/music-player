@@ -13,9 +13,9 @@ const Player = () => {
             </div>
 
             <div className="player_controls">
-                <FontAwesomeIcon icon={faStepBackward} className="player_backward" />
-                <FontAwesomeIcon icon={faPlay} className="player_play" />
-                <FontAwesomeIcon icon={faStepForward} className="player_forward" />
+                <FontAwesomeIcon icon={faStepBackward} size="2x" className="player_backward" />
+                <FontAwesomeIcon icon={faPlay} size="2x" className="player_play" />
+                <FontAwesomeIcon icon={faStepForward} size="2x" className="player_forward" />
             </div>
         </div>
     );
