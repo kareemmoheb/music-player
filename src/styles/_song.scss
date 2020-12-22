@@ -5,10 +5,23 @@
     align-items: center;
     justify-content: center;
     min-height: 60vh;
+    padding-top: 1rem;
     text-transform: capitalize;
     overflow: hidden;
 }
 
 .song_cover {
+    width: 25%;
+    max-width: 320px;
     border-radius: 50%;
+}
+
+.song_title {
+    font-size: 2rem;
+    margin: 1rem 0;
+}
+
+.song_artist {
+    font-size: 1rem;
+    padding-bottom: 0.5rem;
 }

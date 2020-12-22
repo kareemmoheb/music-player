@@ -1,9 +1,10 @@
-import React from "react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faStepForward } from '@fortawesome/free-solid-svg-icons'
-import { faPlay } from '@fortawesome/free-solid-svg-icons'
-import { faStepBackward } from '@fortawesome/free-solid-svg-icons'
-const Player = () => {
+import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStepForward } from '@fortawesome/free-solid-svg-icons';
+import { faPlay } from '@fortawesome/free-solid-svg-icons';
+import { faStepBackward } from '@fortawesome/free-solid-svg-icons';
+
+const Player = (currentSong) => {
     return (
         <div className="player">
             <div className="player_time-control">
