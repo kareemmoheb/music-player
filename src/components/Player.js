@@ -1,18 +1,14 @@
 /* eslint-disable */
 
-import React, { useRef, useState } from 'react';
+import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStepForward } from '@fortawesome/free-solid-svg-icons';
 import { faPlay } from '@fortawesome/free-solid-svg-icons';
 import { faPause } from '@fortawesome/free-solid-svg-icons';
 import { faStepBackward } from '@fortawesome/free-solid-svg-icons';
 
-const Player = ({ currentSong, isPlaying, setIsPlaying }) => {
-    const audioRef = useRef(null);
-    const [songInfo, setSongInfo] = useState({
-        currentTime: 0,
-        duration: 0,
-    });
+const Player = ({ isPlaying, setIsPlaying, audioRef, songInfo }) => {
+
     const playSongHandler = () => {
         if (isPlaying) {
             audioRef.current.pause();
@@ -27,14 +23,6 @@ const Player = ({ currentSong, isPlaying, setIsPlaying }) => {
             Math.floor(time / 60) + ":" + ("0" + Math.floor(time % 60)).slice(-2)
         );
     }
-    const timeUpdateHandler = (e) => {
-        const duration = e.target.duration;
-        const currentTime = e.target.currentTime;
-        setSongInfo({
-            currentTime: currentTime,
-            duration: duration,
-        });
-    }
     const dragHandler = (e) => {
         audioRef.current.currentTime = e.target.value
     }
@@ -43,8 +31,7 @@ const Player = ({ currentSong, isPlaying, setIsPlaying }) => {
         <div className="player">
             <div className="player_time-control">
                 <span className="player_start-time">{formatTime(songInfo.currentTime)}</span>
-                <input type="range" min={0} max={songInfo.duration} value={songInfo.currentTime} onChange={dragHandler} className="player_seeker" />
-
+                <input type="range" min={0} max={songInfo.duration || 0} value={songInfo.currentTime} onChange={dragHandler} className="player_seeker" />
                 <span className="player_end-time">{formatTime(songInfo.duration)}</span>
             </div>
 
@@ -54,7 +41,6 @@ const Player = ({ currentSong, isPlaying, setIsPlaying }) => {
                 <FontAwesomeIcon icon={faStepForward} size="2x" className="player_forward" />
             </div>
 
-            <audio src={currentSong.audio} ref={audioRef} onTimeUpdate={timeUpdateHandler} onLoadedMetadata={timeUpdateHandler}></audio>
         </div>
     );
 }
