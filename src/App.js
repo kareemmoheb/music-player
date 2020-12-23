@@ -7,10 +7,11 @@ import './styles/app.scss';
 function App() {
     const [song, setSong] = useState(data());
     const [currentSong, setcurrentSong] = useState(song.filter(song => (song.active) ? song : '')[0]);
+    const [isPlaying, setIsPlaying] = useState(false);
     return (
         <div className="App">
             <Song currentSong={currentSong} />
-            <Player currentSong={currentSong} />
+            <Player currentSong={currentSong} isPlaying={isPlaying} setIsPlaying={setIsPlaying} />
         </div>
     );
 }
