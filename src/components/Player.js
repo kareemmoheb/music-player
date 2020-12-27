@@ -6,7 +6,6 @@ import { faPause } from '@fortawesome/free-solid-svg-icons';
 import { faStepBackward } from '@fortawesome/free-solid-svg-icons';
 
 const Player = ({ isPlaying, setIsPlaying, audioRef, songInfo, songs, setSongs, currentSong, setCurrentSong }) => {
-
     useEffect(() => {
         const newSongs = songs.map(song => {
             if (song.id === currentSong.id) {
@@ -41,11 +40,16 @@ const Player = ({ isPlaying, setIsPlaying, audioRef, songInfo, songs, setSongs, 
     }
     const formatTime = (time) => Math.floor(time / 60) + ":" + ("0" + Math.floor(time % 60)).slice(-2);
     const dragHandler = e => audioRef.current.currentTime = e.target.value;
+    const trackAnimation = { transform: `translateX(${songInfo.animationPercentage}%)` };
+    const trackGradient = { background: `linear-gradient(to right, ${currentSong.color[0]} , ${currentSong.color[1]})` };
     return (
         <div className="player">
             <div className="player_time-control">
                 <span className="player_start-time">{formatTime(songInfo.currentTime)}</span>
-                <input type="range" min={0} max={songInfo.duration || 0} value={songInfo.currentTime} onChange={dragHandler} className="player_seeker" />
+                <div className="track" style={trackGradient}>
+                    <input type="range" min={0} max={songInfo.duration || 0} value={songInfo.currentTime} onChange={dragHandler} className="player_seeker" />
+                    <div className="animate-track" style={trackAnimation}></div>
+                </div>
                 <span className="player_end-time">{!songInfo.duration ? "0:00" : formatTime(songInfo.duration)}</span>
             </div>
 
